@@ -1,29 +1,37 @@
 function fetchAndDisplayFeeds(newspaperId) {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'block';
+
     switch (newspaperId) {
         case 'newspaper1':
-            fetchFeed('https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/feed/');
+            fetchFeed('https://prod-qt-images.s3.amazonaws.com/production/prothomalo-bangla/feed.xml');
             break;
         case 'newspaper2':
-            fetchFeed('https://api.rss2json.com/v1/api.json?rss_url=https://www.jagonews24.com/rss/rss.xml');
+            fetchFeed('https://www.jagonews24.com/rss/rss.xml');
             break;
         case 'newspaper3':
-            fetchFeed('https://api.rss2json.com/v1/api.json?rss_url=https://www.jagonews24.com/rss/rss.xml');
+            fetchFeed('https://www.jagonews24.com/rss/rss.xml');
             break;
         case 'newspaper4':
-            fetchFeed('https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/frontpage/rss.xml');
+            fetchFeed('https://www.thedailystar.net/frontpage/rss.xml');
             break;
     }
 }
 
 
 function fetchFeed(feedUrl) {
-    fetch(feedUrl)
+    fetch(`https://api.rss2json.com/v1/api.json?rss_url=${feedUrl}`)
         .then(response => response.json())
         .then(data => {
+            const loader = document.getElementById('loader');
+            loader.style.display = 'none';
+            console.log(data.items)
             displayFeed(data.items);
         })
         .catch(error => {
             console.error('Error fetching RSS feed:', error);
+            const loader = document.getElementById('loader');
+            loader.style.display = 'none';
         });
 }
 
