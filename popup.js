@@ -1,6 +1,4 @@
-// Function to fetch and display RSS feeds for a specific newspaper
 function fetchAndDisplayFeeds(newspaperId) {
-    // Fetch and display feeds for the selected newspaper
     switch (newspaperId) {
         case 'newspaper1':
             fetchFeed('https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/feed/');
@@ -17,13 +15,11 @@ function fetchAndDisplayFeeds(newspaperId) {
     }
 }
 
-// Function to fetch the RSS feed from the provided URL
+
 function fetchFeed(feedUrl) {
-    // Use the fetch API to fetch the RSS feed
     fetch(feedUrl)
         .then(response => response.json())
         .then(data => {
-            // Display the parsed feed in the popup
             displayFeed(data.items);
         })
         .catch(error => {
@@ -31,7 +27,6 @@ function fetchFeed(feedUrl) {
         });
 }
 
-// Function to display the parsed RSS feed in the popup
 function displayFeed(items) {
     const feedContainer = document.getElementById('feeds');
     feedContainer.innerHTML = '';
@@ -47,7 +42,6 @@ function displayFeed(items) {
     });
 }
 
-// Add event listeners to newspaper icons
 document.addEventListener('DOMContentLoaded', function () {
     var newspaperIcons = document.getElementsByClassName('newspaper-icon');
     for (var i = 0; i < newspaperIcons.length; i++) {

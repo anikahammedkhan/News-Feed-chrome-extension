@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "BanglaStream",
-    "version": "1.0",
-    "description": "A Chrome extension for reading Bangla RSS feeds.",
+    "name": "News Feed : Your Online News Paper",
+    "version": "1.0.0",
+    "description": "A Chrome extension for reading popular Bangla and English news paper feeds.",
     "permissions": ["activeTab"],
     "icons": {
       "16": "icons/icon16.png",
@@ -13,5 +13,5 @@
       "default_popup": "popup.html",
       "default_icon": "icons/icon48.png"
     }
-  }
+}
   
